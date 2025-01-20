@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.10.14"
+__generated_with = "0.10.15"
 app = marimo.App(width="medium")
 
 
@@ -115,7 +115,7 @@ def _(daily_maintenance_coeff, daily_prices, daily_production, pyo):
         # Objective: Max revenue (Production * Price) on non-maintenance days
         ##################################################################
         model.Revenue = pyo.Objective(
-            expr=sum(20 * model.Production[d] * model.Prices[d] * (1 - model.Maintenance[d]) 
+            expr=sum(model.Production[d] * model.Prices[d] * (1 - model.Maintenance[d]) 
                      for d in model.DAYS),
             sense=pyo.maximize
         )
