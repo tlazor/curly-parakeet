@@ -1,7 +1,7 @@
 import marimo
 
 __generated_with = "0.10.14"
-app = marimo.App(width="medium")
+app = marimo.App(width="medium", auto_download=["ipynb"])
 
 
 @app.cell
@@ -58,7 +58,7 @@ def _(daily_maintenance_coeff, daily_prices, daily_production, pyo):
         # Binary indicator for the strategy
         model.UseSplit = pyo.Var(domain=pyo.Binary)
         
-        # Maintenance "start" variables
+        # Maintenance start variables
         model.Start5 = pyo.Var(model.DAYS, domain=pyo.Binary)
         model.Start3 = pyo.Var(model.DAYS, domain=pyo.Binary)
         model.Start2 = pyo.Var(model.DAYS, domain=pyo.Binary)
@@ -115,7 +115,7 @@ def _(daily_maintenance_coeff, daily_prices, daily_production, pyo):
         # Objective: Max revenue (Production * Price) on non-maintenance days
         ##################################################################
         model.Revenue = pyo.Objective(
-            expr=sum(model.Production[d] * model.Prices[d] * (1 - model.Maintenance[d]) 
+            expr=sum(20 * model.Production[d] * model.Prices[d] * (1 - model.Maintenance[d]) 
                      for d in model.DAYS),
             sense=pyo.maximize
         )
@@ -161,9 +161,11 @@ def _(pyo):
 @app.cell
 def _(get_answer, print_solution):
     for extra in [False, True]:
-        print('')
         model, results = get_answer(extra)
+        print("\n" + '*'*30)
+        print(f"Extra Constraint: {extra}")
         print_solution(model, results)
+        print('*'*30 + "\n")
     return extra, model, results
 
 
