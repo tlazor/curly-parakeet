@@ -7,4 +7,4 @@ A dockerfile and docker compose file are provided. Build and bring up the servic
 NOTE: replace '0.0.0.0' in the server url with 'localhost'
 
 ## Running
-A marimo notebook is provided in project.py. Click the play button in the UI or call the functions from some other script/REPL as you wish.
+A [marimo](https://marimo.io/) notebook is provided in project.py. Click the play button in the UI or call the functions from some other script/REPL as you wish.
