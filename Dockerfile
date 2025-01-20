@@ -10,6 +10,10 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y \
     python3-pip \
     python3.10 \
+    glpk-utils \
+    libglpk-dev \
+    glpk-doc \
+    python3-swiglpk \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
