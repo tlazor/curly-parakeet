@@ -1,0 +1,9 @@
+services:
+  parakeet:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    ports:
+      - "2718:2718" # Maps host port 8080 to container port 80

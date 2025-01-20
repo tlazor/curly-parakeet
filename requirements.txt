@@ -1,0 +1,7 @@
+marimo
+matplotlib
+nbformat
+pympler
+pandas
+seaborn
+pyomo
